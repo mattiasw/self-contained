@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Web page data URI generator</title>
+        <meta name="description" content="Self-contained web page data URI generator.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <form>
+            <h1>Data URI site generator</h1>
+            <p>
+                Create a web page contained inside a link that can be sent to others. No hosting needed.
+            </p>
+            <label>
+                HTML
+                <textarea name="site-content">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;meta http-equiv="x-ua-compatible" content="ie=edge"&gt;
+        &lt;title&gt;My self-contained web page&lt;/title&gt;
+        &lt;meta name="description" content="Self-contained web page data URI generator."&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
+        &lt;style&gt;
+            h1 {
+                text-align: center;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</textarea>
+            </label>
+
+            <div class="buttons">
+                <button type="submit" class="generate-button">Generate</button>
+                <button type="button" class="copy-button">Copy</button>
+            </div>
+
+            <textarea name="data-uri" class="output" readonly></textarea>
+        </form>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html-minifier/4.0.0/htmlminifier.min.js" integrity="sha384-twpMazTttLWds8EHUPW20ykrzw3fCEv5lqozp4lRCsXNq6TWFIGZogdhrbX1Jel5" crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
