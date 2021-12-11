@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -10,15 +10,15 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <main class="container">
+        <h1>Data URI site generator</h1>
+        <p>
+            Create a web page contained inside a link that can be sent to others. No hosting needed.
+        </p>
+        <main class="grid">
             <form>
-                <h1>Data URI site generator</h1>
-                <p>
-                    Create a web page contained inside a link that can be sent to others. No hosting needed.
-                </p>
                 <label>
                     HTML:
-                    <textarea name="site-content" class="site-content">&lt;!doctype html&gt;
+                    <textarea name="site-content" class="site-content" autocorrect="off" spellcheck="false">&lt;!doctype html&gt;
 &lt;html lang="en"&gt;
     &lt;head&gt;
         &lt;meta charset="utf-8"&gt;
@@ -41,7 +41,7 @@
 
                 <div class="grid">
                     <button type="submit" class="generate-button">Generate</button>
-                    <button type="button" class="copy-button" disabled>Copy</button>
+                    <button type="button" class="copy-button" disabled>Copy data URI</button>
                 </div>
 
                 <label>
@@ -50,6 +50,11 @@
                     <small>Size: <span class="size">-</span></small>
                 </label>
             </form>
+
+            <div>
+                Preview:
+                <iframe class="preview" src="about:blank"></iframe>
+            </div>
         </main>
 
         <script src="script.js" type="module"></script>

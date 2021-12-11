@@ -15,13 +15,17 @@ document.querySelector('form').addEventListener('submit', async function (event)
         removeStyleLinkTypeAttributes: true,
     });
     const dataUri = 'data:text/html;charset=utf-8;base64,' + btoa(minifiedHtml);
+    const encodedUri = encodeURI(dataUri);
 
     const output = document.querySelector('[name="data-uri"]');
-    output.value = encodeURI(dataUri);
+    output.value = encodedUri;
     output.focus();
     selectOutput();
 
     document.querySelector('.copy-button').disabled = false;
+
+    const preview = document.querySelector('.preview');
+    preview.src = encodedUri;
 
     updateSize(output.value.length);
 });

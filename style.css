@@ -1,8 +1,40 @@
+body {
+    padding: 1rem 2rem;
+}
+
+h1 {
+    --typography-spacing-vertical: 1rem;
+}
+
+body > main {
+    --block-spacing-vertical: 20px;
+}
+
 .site-content {
+    font-family: monospace;
+    font-size: .8rem;
     height: max(calc(100vh - 500px), 300px);
 }
 
 .output {
     font-size: .75rem;
     height: 100px;
+}
+
+.preview {
+    background: #efefef;
+    border-radius: var(--border-radius);
+    height: max(calc(100vh - 500px), 450px);
+    margin-top: calc(var(--spacing) * .25);
+    width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 1rem;
+    }
+
+    h1 {
+        --font-size: 1.6rem;
+    }
 }
