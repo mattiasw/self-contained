@@ -1,8 +1,6 @@
 import {minify} from 'html-minifier-terser/dist/htmlminifier.esm.bundle.js';
 
-const form = document.querySelector('form');
-
-form.addEventListener('submit', async function (event) {
+document.querySelector('form').addEventListener('submit', async function (event) {
     event.preventDefault();
 
     const html = document.querySelector('[name="site-content"]').value;
@@ -20,15 +18,15 @@ form.addEventListener('submit', async function (event) {
 
     const output = document.querySelector('[name="data-uri"]');
     output.value = encodeURI(dataUri);
-    output.classList.add('active');
     output.focus();
     selectOutput();
 
-    document.querySelector('.copy-button').classList.add('active');
+    document.querySelector('.copy-button').disabled = false;
+
+    updateSize(output.value.length);
 });
 
-const copyButton = document.querySelector('.copy-button');
-copyButton.addEventListener('click', function (event) {
+document.querySelector('.copy-button').addEventListener('click', function (event) {
     event.preventDefault();
     selectOutput();
     document.execCommand('copy');
@@ -41,4 +39,15 @@ function selectOutput() {
     setTimeout(function () {
         output.scrollTop = 0;
     }, 10);
+}
+
+function updateSize(length) {
+    const size = document.querySelector('.size');
+    if (length < 1024) {
+        size.textContent = `${length} byte${length === 1 ? '' : 's'}`;
+    } else if (length < 1024 * 1024) {
+        size.textContent = `${(length / 1024).toFixed(1)} KiB`;
+    } else {
+        size.textContent = `${(length / 1024 / 1024).toFixed(1)} MiB`;
+    }
 }

@@ -6,17 +6,19 @@
         <title>Web page data URI generator</title>
         <meta name="description" content="Self-contained web page data URI generator.">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.4.1/css/pico.min.css" integrity="sha384-7YKuGDMxfA6V3TD8ZVyQo+XwT7JLhodANMMQ1BcFXhIinFQcE13Xn/SFW8Mr7jzi" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <form>
-            <h1>Data URI site generator</h1>
-            <p>
-                Create a web page contained inside a link that can be sent to others. No hosting needed.
-            </p>
-            <label>
-                HTML
-                <textarea name="site-content">&lt;!doctype html&gt;
+        <main class="container">
+            <form>
+                <h1>Data URI site generator</h1>
+                <p>
+                    Create a web page contained inside a link that can be sent to others. No hosting needed.
+                </p>
+                <label>
+                    HTML:
+                    <textarea name="site-content" class="site-content">&lt;!doctype html&gt;
 &lt;html lang="en"&gt;
     &lt;head&gt;
         &lt;meta charset="utf-8"&gt;
@@ -35,15 +37,20 @@
     &lt;/body&gt;
 &lt;/html&gt;
 </textarea>
-            </label>
+                </label>
 
-            <div class="buttons">
-                <button type="submit" class="generate-button">Generate</button>
-                <button type="button" class="copy-button">Copy</button>
-            </div>
+                <div class="grid">
+                    <button type="submit" class="generate-button">Generate</button>
+                    <button type="button" class="copy-button" disabled>Copy</button>
+                </div>
 
-            <textarea name="data-uri" class="output" readonly></textarea>
-        </form>
+                <label>
+                    Data URI:
+                    <textarea name="data-uri" class="output" readonly></textarea>
+                    <small>Size: <span class="size">-</span></small>
+                </label>
+            </form>
+        </main>
 
         <script src="script.js" type="module"></script>
     </body>
