@@ -2,21 +2,18 @@
   "name": "self-contained",
   "version": "1.0.0",
   "description": "Self-contained web page data URI generator.",
-  "main": "index.js",
   "scripts": {
-    "watch": "parcel --https --out-dir dist index.html",
+    "build": "parcel build index.html",
+    "start": "parcel --https index.html",
+    "watch": "parcel --https index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mattias Wallander",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/preset-flow": "^7.0.0",
-    "babel-plugin-module-resolver": "^3.2.0",
-    "parcel-bundler": "^1.12.3"
+    "parcel": "^2.0.1"
   },
   "dependencies": {
-    "html-minifier": "^4.0.0"
+    "html-minifier-terser": "^7.0.0-alpha.0"
   }
 }
