@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mattias Wallander",
-  "license": "GPL-3.0",
+  "license": "agpl-3.0",
   "devDependencies": {
     "parcel": "^2.0.1"
   },
