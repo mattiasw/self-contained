@@ -1,7 +1,9 @@
 import {minify} from 'html-minifier-terser/dist/htmlminifier.esm.bundle.js';
 
-document.querySelector('form').addEventListener('submit', async function (event) {
-    event.preventDefault();
+document.querySelector('form').addEventListener('submit', generate);
+
+async function generate(event) {
+    event?.preventDefault();
 
     const html = document.querySelector('[name="site-content"]').value;
     const minifiedHtml = await minify(html, {
@@ -19,8 +21,10 @@ document.querySelector('form').addEventListener('submit', async function (event)
 
     const output = document.querySelector('[name="data-uri"]');
     output.value = encodedUri;
-    output.focus();
-    selectOutput();
+    if (event) {
+        output.focus();
+        selectOutput();
+    }
 
     document.querySelector('.copy-button').disabled = false;
 
@@ -28,7 +32,7 @@ document.querySelector('form').addEventListener('submit', async function (event)
     preview.src = encodedUri;
 
     updateSize(output.value.length);
-});
+}
 
 document.querySelector('.copy-button').addEventListener('click', function (event) {
     event.preventDefault();
@@ -55,3 +59,5 @@ function updateSize(length) {
         size.textContent = `${(length / 1024 / 1024).toFixed(1)} MiB`;
     }
 }
+
+generate();

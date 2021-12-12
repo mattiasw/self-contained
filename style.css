@@ -22,7 +22,9 @@ body > main {
 }
 
 .preview {
+    --border-color: var(--form-element-border-color);
     background: #efefef;
+    border: var(--border-width) solid var(--border-color);
     border-radius: var(--border-radius);
     height: max(calc(100vh - 500px), 450px);
     margin-top: calc(var(--spacing) * .25);
