@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Self-contained web page data URI generator.",
   "scripts": {
-    "build": "parcel build index.html",
+    "build": "parcel build --public-url ./ index.html",
     "start": "parcel --https index.html",
     "watch": "parcel --https index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
