@@ -1,23 +1,33 @@
-import {minify} from 'html-minifier-terser/dist/htmlminifier.esm.bundle.js';
+import * as HtmlMinifier from 'html-minifier-terser/dist/htmlminifier.esm.bundle.js';
 
+document.querySelector('[name="show-import"]').addEventListener('click', showImport);
+document.querySelector('[name="import-button"]').addEventListener('click', importPrevious);
 document.querySelector('form').addEventListener('submit', generate);
+document.querySelector('.copy-button').addEventListener('click', copyDataURI);
+
+generate();
+
+function showImport() {
+    document.querySelector('.import-container--collapsed').classList.remove('import-container--collapsed');
+}
+
+function importPrevious() {
+    const importField = document.querySelector('[name="import"]');
+    const dataURI = importField.value;
+    const base64Html = dataURI.replace(/^data:text\/html;[^,]*base64,/, '');
+    document.querySelector('[name="site-content"]').value = atob(base64Html);
+    generate();
+    importField.value = '';
+}
 
 async function generate(event) {
     event?.preventDefault();
 
-    const html = document.querySelector('[name="site-content"]').value;
-    const minifiedHtml = await minify(html, {
-        minifyCSS: true,
-        minifyJS: true,
-        removeAttributeQuotes: true,
-        removeComments: true,
-        removeEmptyAttributes: true,
-        removeRedundantAttributes: true,
-        removeScriptTypeAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-    });
-    const dataUri = 'data:text/html;charset=utf-8;base64,' + btoa(minifiedHtml);
-    const encodedUri = encodeURI(dataUri);
+    const content = document.querySelector('[name="site-content"]').value;
+    const shouldMinify = document.querySelector('[name="minify"]').checked;
+    const html = shouldMinify ? await minify(content) : content;
+    const dataURI = 'data:text/html;charset=utf-8;base64,' + btoa(html);
+    const encodedUri = encodeURI(dataURI);
 
     const output = document.querySelector('[name="data-uri"]');
     output.value = encodedUri;
@@ -34,12 +44,19 @@ async function generate(event) {
     updateSize(output.value.length);
 }
 
-document.querySelector('.copy-button').addEventListener('click', function (event) {
-    event.preventDefault();
-    selectOutput();
-    document.execCommand('copy');
-    this.focus();
-});
+function minify(content) {
+    return HtmlMinifier.minify(content, {
+        minifyCSS: true,
+        minifyJS: true,
+        removeAttributeQuotes: true,
+        removeComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+    });
+}
+
 
 function selectOutput() {
     const output = document.querySelector('[name="data-uri"]');
@@ -60,4 +77,9 @@ function updateSize(length) {
     }
 }
 
-generate();
+function copyDataURI(event) {
+    event.preventDefault();
+    selectOutput();
+    document.execCommand('copy');
+    this.focus();
+}
