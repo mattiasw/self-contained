@@ -3,6 +3,8 @@
 Create a web page contained inside a link that can be sent to others. No hosting
 needed.
 
+Try it out: https://mattiasw.github.io/self-contained/
+
 ## How does it work?
 
 In addition to regular URLs like http://example.com, web browsers can also use
