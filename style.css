@@ -3,14 +3,21 @@
 }
 
 body {
+    overflow-x: hidden;
     padding: 1rem 2rem 0;
 }
 
 body > main {
     padding-bottom: 0;
 }
+
 h1 {
     --typography-spacing-vertical: 1rem;
+}
+
+.github {
+    display: block;
+    margin-bottom: .5rem;
 }
 
 body > main {
@@ -69,12 +76,34 @@ form {
     width: 100%;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 479px) {
     body {
         padding: 1rem;
     }
 
     h1 {
         --font-size: 1.6rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .github {
+        background: black;
+        border-bottom-width: 1px;
+        border-color: #fff;
+        border-left-width: 0;
+        border-right-width: 0;
+        border-style: solid;
+        border-top-width: 1px;
+        box-shadow: 0 0 10px 3px #000;
+        color: #fff;
+        font-size: .8rem;
+        font-weight: bold;
+        padding: 6px 60px;
+        position: absolute;
+        right: 60px;
+        text-transform: none;
+        top: 60px;
+        transform: translateX(50%) translateY(-50%) rotateZ(45deg);
     }
 }
