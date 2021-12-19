@@ -21,7 +21,7 @@ function importPrevious() {
 async function generate(event) {
     event?.preventDefault();
 
-    const content = document.querySelector('[name="site-content"]').value;
+    const content = addWatermark(document.querySelector('[name="site-content"]').value);
     const shouldMinify = document.querySelector('[name="minify"]').checked;
     const html = shouldMinify ? await minify(content) : content;
     const dataURI = 'data:text/html;charset=utf-8;base64,' + btoa(html);
@@ -40,6 +40,27 @@ async function generate(event) {
     preview.src = encodedUri;
 
     updateSize(output.value.length);
+}
+
+function addWatermark(content) {
+    const htmlPattern = /<\/html>[\n\r\s]*$/;
+    if (htmlPattern.test(content)) {
+        const wrapperStyles = [
+            'background: rgba(0, 0, 0, .35);',
+            'bottom: 0;',
+            'color: #aaa;',
+            'font-size: .8rem;',
+            'left: 0;',
+            'opacity: .5;',
+            'padding: 4px 8px;',
+            'position: fixed;',
+        ].join('');
+        return content.replace(
+            htmlPattern,
+            `<div style="${wrapperStyles}">Created with <a href="https://mattiasw.github.io/self-contained/" target="_blank">Web page data URI generator</a>.</div></html>`,
+        );
+    }
+    return content;
 }
 
 async function minify(content) {
