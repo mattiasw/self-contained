@@ -1,5 +1,3 @@
-import * as HtmlMinifier from 'html-minifier-terser/dist/htmlminifier.esm.bundle.js';
-
 document.querySelector('[name="show-import"]').addEventListener('click', showImport);
 document.querySelector('[name="import-button"]').addEventListener('click', importPrevious);
 document.querySelector('form').addEventListener('submit', generate);
@@ -44,7 +42,9 @@ async function generate(event) {
     updateSize(output.value.length);
 }
 
-function minify(content) {
+async function minify(content) {
+    const HtmlMinifier = await import('html-minifier-terser/dist/htmlminifier.cjs');
+
     return HtmlMinifier.minify(content, {
         minifyCSS: true,
         minifyJS: true,
