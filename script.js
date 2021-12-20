@@ -46,9 +46,9 @@ function addWatermark(content) {
     const htmlPattern = /<\/html>[\n\r\s]*$/;
     if (htmlPattern.test(content)) {
         const wrapperStyles = [
-            'background: rgba(0, 0, 0, .35);',
+            'background: rgba(20, 90, 180, .35);',
             'bottom: 0;',
-            'color: #aaa;',
+            'display: block;',
             'font-size: .8rem;',
             'left: 0;',
             'opacity: .5;',
@@ -57,7 +57,7 @@ function addWatermark(content) {
         ].join('');
         return content.replace(
             htmlPattern,
-            `<div style="${wrapperStyles}">Created with <a href="https://mattiasw.github.io/self-contained/" target="_blank">Web page data URI generator</a>.</div></html>`,
+            `<a href="https://mattiasw.github.io/self-contained/" target="_blank" style="${wrapperStyles}">Created with Web page data URI generator.</a></html>`,
         );
     }
     return content;
