@@ -13,9 +13,13 @@ function importPrevious() {
     const importField = document.querySelector('[name="import"]');
     const dataURI = importField.value;
     const base64Html = dataURI.replace(/^data:text\/html;[^,]*base64,/, '');
-    document.querySelector('[name="site-content"]').value = atob(base64Html);
+    document.querySelector('[name="site-content"]').value = removeWatermark(atob(base64Html));
     generate();
     importField.value = '';
+}
+
+function removeWatermark(content) {
+    return content.replace(/<a href="https:\/\/mattiasw\.github\.io\/self-contained\/"[^>]+>[^<]+<\/a><\/body>/, '</body>');
 }
 
 async function generate(event) {
@@ -43,7 +47,7 @@ async function generate(event) {
 }
 
 function addWatermark(content) {
-    const htmlPattern = /<\/html>[\n\r\s]*$/;
+    const htmlPattern = /<\/body>[\n\r\s]*<\/html>[\n\r\s]*$/;
     if (htmlPattern.test(content)) {
         const wrapperStyles = [
             'background: rgba(20, 90, 180, .35);',
@@ -57,7 +61,7 @@ function addWatermark(content) {
         ].join('');
         return content.replace(
             htmlPattern,
-            `<a href="https://mattiasw.github.io/self-contained/" target="_blank" style="${wrapperStyles}">Created with Web page data URI generator.</a></html>`,
+            `<a href="https://mattiasw.github.io/self-contained/" target="_blank" style="${wrapperStyles}">Created with Web page data URI generator.</a></body>\n</html>`,
         );
     }
     return content;
