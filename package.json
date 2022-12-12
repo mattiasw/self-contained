@@ -4,16 +4,26 @@
   "description": "Self-contained web page data URI generator.",
   "scripts": {
     "build": "parcel build --public-url ./ index.html",
-    "start": "parcel --https index.html",
-    "watch": "parcel --https index.html",
+    "start": "parcel --https --no-autoinstall index.html",
+    "watch": "parcel --https --no-autoinstall index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mattias Wallander",
   "license": "agpl-3.0",
+  "alias": {
+    "buffer": false,
+    "Buffer": false,
+    "http": false,
+    "https": false,
+    "os": false,
+    "path": false,
+    "process": false,
+    "url": false
+  },
   "devDependencies": {
-    "parcel": "^2.0.1"
+    "parcel": "^2.8.1"
   },
   "dependencies": {
-    "html-minifier-terser": "^7.0.0-alpha.0"
+    "html-minifier-terser": "^7.1.0"
   }
 }
