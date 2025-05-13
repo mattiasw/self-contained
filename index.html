@@ -1,4 +1,25 @@
-<!doctype html><html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Web page data URI generator</title><meta name="description" content="Self-contained web page data URI generator."><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.6/css/pico.min.css" integrity="sha384-3edOW8hbyoE5dcN5KLGzXBJ7ObwLWlQTONfez9ieFk2/YbX+mo7NbktAT69X+xZK" crossorigin><link rel="stylesheet" href="index.187fd472.css"></head><body> <h1>Data URI site generator</h1> <p> Create a web page contained inside a link that can be sent to others. No hosting needed. </p> <a href="https://github.com/mattiasw/self-contained" class="github">GitHub repo</a> <main> <div class="grid import-container import-container--collapsed"> <button name="show-import" class="outline">Import from previous data URI</button> <label> Import from previous data URI: <input type="text" name="import"> </label> <div> <button name="import-button">Import</button> </div> </div> <div class="grid"> <form> <label> HTML: <textarea name="site-content" class="site-content" autocorrect="off" spellcheck="false">&lt;!doctype html&gt;
+<!DOCTYPE html><html lang=en data-theme=dark><script type=importmap>{"imports":{"jtRY6":"./htmlminifier.8d8b8efd.js"}}</script><title>Web page data URI generator</title><meta name=description content="Self-contained web page data URI generator."><meta name=viewport content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel=stylesheet href=https://unpkg.com/@picocss/pico@1.5.6/css/pico.min.css integrity=sha384-3edOW8hbyoE5dcN5KLGzXBJ7ObwLWlQTONfez9ieFk2/YbX+mo7NbktAT69X+xZK crossorigin=anonymous><link rel=stylesheet href=self-contained.397b5c8d.css><body>
+        <h1>Data URI site generator</h1>
+        <p>
+            Create a web page contained inside a link that can be sent to others. No hosting needed.
+        </p>
+        <a href=https://github.com/mattiasw/self-contained class=github>GitHub repo</a>
+        <main>
+            <div class="grid import-container import-container--collapsed">
+                <button name=show-import class=outline>Import from previous data URI</button>
+                <label>
+                    Import from previous data URI:
+                    <input name=import>
+                </label>
+                <div>
+                    <button name=import-button>Import</button>
+                </div>
+            </div>
+            <div class=grid>
+                <form>
+                    <label>
+                        HTML:
+                        <textarea name=site-content class=site-content autocorrect=off spellcheck=false>&lt;!doctype html&gt;
 &lt;html lang="en"&gt;
     &lt;head&gt;
         &lt;meta charset="utf-8"&gt;
@@ -28,4 +49,34 @@
         &lt;/script&gt;
     &lt;/body&gt;
 &lt;/html&gt;
-</textarea> </label> <div class="grid"> <label> <input type="checkbox" name="minify"> Minify (keep unchecked if you want to save the data URI to continue later) </label> </div> <div class="grid"> <button type="submit" class="generate-button">Generate</button> <button type="button" class="copy-button" disabled>Copy data URI</button> </div> <label> Data URI: <textarea name="data-uri" class="output" readonly></textarea> <small>Size: <span class="size">-</span></small> </label> </form> <div> Preview: <iframe class="preview" src="about:blank"></iframe> </div> </div> </main> <script src="index.95974002.js" type="module"></script> </body></html>
+</textarea>
+                    </label>
+
+                    <div class=grid>
+                        <label>
+                            <input type=checkbox name=minify>
+                            Minify (keep unchecked if you want to save the data URI to continue later)
+                        </label>
+                    </div>
+                    <div class=grid>
+                        <button class=generate-button>Generate</button>
+                        <button type=button class=copy-button disabled>Copy data URI</button>
+                    </div>
+
+                    <label>
+                        Data URI:
+                        <textarea name=data-uri class=output readonly></textarea>
+                        <small>Size: <span class=size>-</span></small>
+                    </label>
+                </form>
+
+                <div>
+                    Preview:
+                    <iframe class=preview title=Preview src=about:blank></iframe>
+                </div>
+            </div>
+        </main>
+
+        <script src=self-contained.7510ec27.js type=module></script>
+    
+
