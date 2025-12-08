@@ -21,7 +21,7 @@
     "url": false
   },
   "devDependencies": {
-    "parcel": "^2.16.1"
+    "parcel": "^2.16.3"
   },
   "dependencies": {
     "html-minifier-terser": "^7.1.0"
